@@ -1,11 +1,18 @@
 import React from 'react';
 import Login from 'Login';
+import firebaseApp from 'BE/firebase';
+import Router from 'Router/router.js';
 
 function App() {
+  const LoggedIn = false;
+
   return (
   <>
-    <h1>Hello Sir! Welcome to the world</h1>
-    <Login/>
+    {
+      LoggedIn ? 
+      <Login /> : 
+      <Router />
+    } 
   </>
   );
 }
