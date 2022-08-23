@@ -14,14 +14,20 @@ import Photos from "Components/photos";
 import Videos from "Components/videos";
 import Jobs from "Components/jobs";
 
+/* 
+Note: 
+- If logged in, it routes to Home
+*/
+
 const Router = ({isLoggedIn}) => {
+  console.log("isLoggedIn in Router:" +isLoggedIn);
     return (
     <BrowserRouter>
         <Routes>
             { isLoggedIn ? 
-            <Route path="/" element={<Login />} />
+              <Route path="/" element={<Home />} />
             :
-            <Route path="/" element={<Home />} />
+              <Route path="/" element={<Login />} />
             }
             <Route path="/chat" element={<Chat />} />
             <Route path="/photos" element={<Photos />} />

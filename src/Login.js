@@ -1,10 +1,13 @@
-
 import React, {useState} from 'react';
+import { auth, createUser, signInUser } from "BE/firebase";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+    // Checks whether the user is a new or a old user.
+    const [newAccount, setNewAccount] = useState(false);
+    const [isLoggedIn, setIsLogedIn] = useState(false);
+
     // OnChange Handler
     const onChange = (event) => {
         
@@ -20,9 +23,21 @@ const Login = () => {
       };
     
     // Submit handler
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-
+        // if newAccount, create a new user. if not, log them in with the existing account.
+        try {
+            let data;
+            if (newAccount) {
+              data = await createUser(auth, email, password)
+            } else {
+              data = await signInUser(auth, email, password)
+              setIsLogedIn(true);
+            }
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
     };
     
     return (
@@ -62,10 +77,11 @@ const Login = () => {
                              text-white rounded-xl border border-green 
                              focus:outline-none focus:border-green-dark`}
                     type="submit" 
-                    value="Log In" 
+                    value={newAccount ? "Create Account" : "Log In"}
                 />
             </form>
             <div>
+                {isLoggedIn ? <div>You are logged in Now dude!</div>: <div></div>}
             <button>Continue with Google</button>
             <button>Continue with Github</button>
             </div>
