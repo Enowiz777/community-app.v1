@@ -1,18 +1,14 @@
-import React from 'react';
-import Login from 'Login';
+import React, {useState} from 'react';
 import firebaseApp from 'BE/firebase';
 import Router from 'Router/router.js';
 
 function App() {
-  const LoggedIn = false;
-
+  // Check whether the user is logged in or not.
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  console.log(isLoggedIn);
   return (
   <>
-    {
-      LoggedIn ? 
-      <Login /> : 
-      <Router />
-    } 
+    <Router isLoggedIn={isLoggedIn} />
   </>
   );
 }

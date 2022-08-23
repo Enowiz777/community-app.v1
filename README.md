@@ -75,3 +75,11 @@ d. Create a real-time DB and include that var file in there.
 7. Create a router
 a. npm install react-router-dom@6
 b. 
+
+20220822
+
+1. Create a login to take inputs.
+- created a useState that takes input onChange.
+
+2. Create new button. 
+3. 
