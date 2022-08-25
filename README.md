@@ -83,3 +83,11 @@ b.
 
 2. Create new button. 
 3. 
+
+20220824
+
+1. Create Google, Facebook, Twitter logins.
+
+- Make Google login
+- If it works, go for it. 
+
