@@ -19,13 +19,12 @@ Note:
 - If logged in, it routes to Home
 */
 
-const Router = ({isLoggedIn}) => {
-  console.log("isLoggedIn in Router:" +isLoggedIn);
+const Router = ({isLoggedIn, userObj}) => {
     return (
     <BrowserRouter>
         <Routes>
             { isLoggedIn ? 
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home userObj={userObj}/>} />
             :
               <Route path="/" element={<Login />} />
             }

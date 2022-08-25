@@ -11,6 +11,18 @@ import {
     OAuthProvider
     } from "firebase/auth";
 
+import { 
+    getFirestore,
+    collection,
+    addDoc,
+    query,
+    onSnapshot
+ } from "firebase/firestore";
+
+ // Testing DB query
+
+
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -31,3 +43,10 @@ export const signInUser = signInWithEmailAndPassword;
 export const GoogleUser = GoogleAuthProvider;
 export const signInPopup = signInWithPopup;
 export const OAuthProviderForYahoo = OAuthProvider ;
+
+// Initialize DB
+export const database = getFirestore(firebaseApp);
+export const dbCollection = collection;
+export const dbAddDoc = addDoc;
+export const Query = query;
+export const OnSnapshot = onSnapshot;

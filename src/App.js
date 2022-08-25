@@ -9,11 +9,15 @@ function App() {
   // Check whether the user is logged in or not.
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
+  // Query loggedin User data.
+  const [userObj, setUserObj] = useState(null);
+
   // onAuthStateChanged adds an observer for changes in user's sign-in state.
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
+        setUserObj(user);
       } else {
         setIsLoggedIn(false);
       }
@@ -22,10 +26,10 @@ function App() {
     });
   }, []);
 
-  console.log("User logged in?: " + isLoggedIn);
   return (
   <>
-    {init ? <Router isLoggedIn={isLoggedIn} /> : "Initializing..."}
+    {init ? <Router isLoggedIn={isLoggedIn} userObj={userObj} /> : "Initializing..."}
+    <footer>&copy; {new Date().getFullYear()} Young Professionals</footer>
   </>
   );
 }

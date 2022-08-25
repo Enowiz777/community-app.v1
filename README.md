@@ -91,3 +91,13 @@ b.
 - Make Google login
 - If it works, go for it. 
 
+
+20220825
+
+Firestore.
+- Set up NoSQL database. 
+- Create a input that post data in the DB. 
+- Pass a parameter of userObject once the user logs in because we can use that data for a profile or comment. 
+
+- Using the Firestore DB - I created a real-time chat room. 
+
