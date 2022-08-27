@@ -101,3 +101,9 @@ Firestore.
 
 - Using the Firestore DB - I created a real-time chat room. 
 
+20220826
+
+- Create a page structure and navbar at home
+- I set up the router and the navbar - basic
+
+- CSS to design the front home page. 
