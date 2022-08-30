@@ -19,6 +19,15 @@ import {
     onSnapshot
  } from "firebase/firestore";
 
+// Storage
+import { 
+    getStorage, 
+    ref, 
+    uploadString, 
+    listAll, 
+    getDownloadURL   
+} from "firebase/storage";
+
  // Testing DB query
 
 
@@ -50,3 +59,10 @@ export const dbCollection = collection;
 export const dbAddDoc = addDoc;
 export const Query = query;
 export const OnSnapshot = onSnapshot;
+
+// Initialize storage
+export const GetStorage = getStorage;
+export const Ref = ref;
+export const UploadString = uploadString; 
+export const ListAll = listAll ; 
+export const GetDownloadURL = getDownloadURL

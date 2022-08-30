@@ -23,7 +23,6 @@ function App() {
         setIsLoggedIn(false);
       }
       setInit(true);
-      
     });
   }, []);
 

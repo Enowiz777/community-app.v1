@@ -107,3 +107,14 @@ Firestore.
 - I set up the router and the navbar - basic
 
 - CSS to design the front home page. 
+
+20220829
+
+- Create a storage from the firebase.
+- Install uuid to create a random unique id
+```
+npm install uuid
+```
+- learn to create reference to firebase storage 
+- learned to lsit items
+- Cannot create setState array of list items.

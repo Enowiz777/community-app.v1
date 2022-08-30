@@ -37,7 +37,7 @@ const Router = ({isLoggedIn, userObj}) => {
             <Route index element={<Login />}/>
           }
             <Route path="chat" element={<Chat userObj={userObj}/>} />
-            <Route path="photos" element={<Photos />} />
+            <Route path="photos" element={<Photos userObj={userObj} />} />
             <Route path="videos" element={<Videos />} />
             <Route path="jobs" element={<Jobs />} />
           </Route>
