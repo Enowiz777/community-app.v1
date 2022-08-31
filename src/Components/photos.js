@@ -9,34 +9,16 @@ const Photos = ({userObj}) => {
     const [photoURL, setPhotoURL] = useState([]);
     let urlArray = "";
     useEffect(() => {
-        const storage = GetStorage();
-        const FolderRef = Ref(storage, 'pictures');
-        let arraytest = [];
-        function urlReceiver(url) {
-            arraytest.push(url);
+       const getUrls = async () => {
+            const storage = GetStorage();
+            const listRef = Ref(storage, "pictures")
+            const list = await ListAll(listRef);
+            const items = list.items.map((ref) => GetDownloadURL(ref));
+            const urls = await Promise.all(items);
+            console.log(urls);
         }
-
-
-        try {
-            const waitForList = async () => 
-            {
-                ListAll(FolderRef)
-                .then((res) => {
-                    res.items.forEach((itemRef)=> {
-                        GetDownloadURL(itemRef).then((url)=>
-                        {
-                            urlReceiver(url);
-                        })
-                    });
-                });
-            }   
-            waitForList();
-        } finally {
-            arraytest.map((item)=> {
-                console.log(item);
-            })
-        }
-
+       getUrls();
+       
 
     }, []);
     
