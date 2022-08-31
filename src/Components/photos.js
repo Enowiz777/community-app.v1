@@ -1,31 +1,45 @@
 import React, { useState, useEffect } from "react";
 import {v4 as uuidv4} from 'uuid';
 import {GetStorage, Ref, UploadString, ListAll, GetDownloadURL  } from "BE/firebase";
+import { list } from "firebase/storage";
+import { data } from "autoprefixer";
 
 const Photos = ({userObj}) => {
     const [attachment, setAttachment] = useState();
     const [photoURL, setPhotoURL] = useState([]);
-    let URLsArray = [];
+    let urlArray = "";
     useEffect(() => {
         const storage = GetStorage();
-        const listRef = Ref(storage, 'pictures');
-        ListAll(listRef)
-        .then((res) => {
-        res.prefixes.forEach((folderRef) => {
-            // All the prefixes under listRef.
-            // You may call listAll() recursively on them.
-        });
-        res.items.forEach((itemRef) => {
-            // All the items under listRef.
-                GetDownloadURL(itemRef)
-                .then((url) => {
-                    URLsArray.push(url)
-                })
-            });
-        }).catch((error) => {
-        // Uh-oh, an error occurred!
-        });
-    }, [URLsArray]);
+        const FolderRef = Ref(storage, 'pictures');
+        let arraytest = [];
+        function urlReceiver(url) {
+            arraytest.push(url);
+        }
+
+
+        try {
+            const waitForList = async () => 
+            {
+                ListAll(FolderRef)
+                .then((res) => {
+                    res.items.forEach((itemRef)=> {
+                        GetDownloadURL(itemRef).then((url)=>
+                        {
+                            urlReceiver(url);
+                        })
+                    });
+                });
+            }   
+            waitForList();
+        } finally {
+            arraytest.map((item)=> {
+                console.log(item);
+            })
+        }
+
+
+    }, []);
+    
     const onFileChange = (event) => {
         // extract Filelist object from the event.
         const {
@@ -62,7 +76,6 @@ const Photos = ({userObj}) => {
     }
 
     const onClearAttachment = () => setAttachment(null);
-    console.log(URLsArray);
     return(
         <div>
             <h1>Upload your photo:</h1>
@@ -74,6 +87,12 @@ const Photos = ({userObj}) => {
                     <button onClick={onClearAttachment}>Clear</button>
                 </div>
             )}
+            {photoURL.map((item) => 
+            <li>
+                {item}
+            </li>
+            )}
+            
 
         </div>
     );

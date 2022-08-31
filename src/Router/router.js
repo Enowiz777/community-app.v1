@@ -22,6 +22,7 @@ Note:
 const Router = ({isLoggedIn, userObj}) => {
     return (
       <>
+        { isLoggedIn ? 
         <navbar className="flex space-x-10 justify-center">
           <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/">Home</Link>
           <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/chat">Chat</Link>
@@ -29,6 +30,9 @@ const Router = ({isLoggedIn, userObj}) => {
           <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/photos">Photos</Link>
           <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/videos">Videos</Link>
         </navbar>
+        :
+        <></>
+        }
         <Routes>
           <Route path="/">
           { isLoggedIn ? 

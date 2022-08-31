@@ -118,3 +118,10 @@ npm install uuid
 - learn to create reference to firebase storage 
 - learned to lsit items
 - Cannot create setState array of list items.
+
+20220830
+
+- Make the pictures display on the photos page.
+- Mix of Promise and Async...await
+- Learned about PRomise and Async and written on the note. 
+- Try using Async...await always be consistent.
