@@ -125,3 +125,12 @@ npm install uuid
 - Mix of Promise and Async...await
 - Learned about PRomise and Async and written on the note. 
 - Try using Async...await always be consistent.
+
+20220901
+
+- Create a form that takes in the Title and Description
+- Make the Title and Desciption gets printed on the page as they submit. 
+  - Maybe change the font and styles to make it readible.
+- Date posted should automatically be generated.
+
+

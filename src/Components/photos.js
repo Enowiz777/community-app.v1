@@ -7,18 +7,18 @@ import { data } from "autoprefixer";
 const Photos = ({userObj}) => {
     const [attachment, setAttachment] = useState();
     const [photoURL, setPhotoURL] = useState([]);
-    let urlArray = "";
+    
     useEffect(() => {
-       const getUrls = async () => {
+       
+        const getUrls = async () => {
             const storage = GetStorage();
             const listRef = Ref(storage, "pictures")
             const list = await ListAll(listRef);
             const items = list.items.map((ref) => GetDownloadURL(ref));
             const urls = await Promise.all(items);
-            console.log(urls);
+            setPhotoURL(oldArray => [...oldArray, ...urls]);
         }
-       getUrls();
-       
+        getUrls();
 
     }, []);
     
@@ -69,11 +69,13 @@ const Photos = ({userObj}) => {
                     <button onClick={onClearAttachment}>Clear</button>
                 </div>
             )}
-            {photoURL.map((item) => 
-            <li>
-                {item}
-            </li>
-            )}
+            <div>
+                {photoURL.map((item) => 
+                <li>
+                    <img src={item} />
+                </li>
+                )}
+            </div>  
             
 
         </div>
