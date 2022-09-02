@@ -134,3 +134,13 @@ npm install uuid
 - Date posted should automatically be generated.
 
 
+20220902
+
+Idea:
+- Create like buttons or going button.
+- Create heart buttons. 
+- Create a checkin button. 
+
+- Change the navbar - if select create a color
+
+

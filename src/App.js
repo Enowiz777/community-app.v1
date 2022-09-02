@@ -30,7 +30,7 @@ function App() {
   <>
     <div className="m-[77px]">
     
-    <header className="p-4 font-bold text-[30px] text-white bg-emerald-300 text-center">Welcome to Young Professionals</header>
+    <header className="p-4 m-4 font-bold text-[30px] text-white bg-emerald-300 text-center">Welcome to Young Professionals</header>
 
     {init ? <Router isLoggedIn={isLoggedIn} userObj={userObj} /> : "Initializing..."}
     <footer>&copy; {new Date().getFullYear()} Young Professionals</footer>

@@ -23,12 +23,12 @@ const Router = ({isLoggedIn, userObj}) => {
     return (
       <>
         { isLoggedIn ? 
-        <navbar className="flex space-x-10 justify-center">
-          <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/">Home</Link>
-          <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/chat">Chat</Link>
-          <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/jobs">Jobs</Link>
-          <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/photos">Photos</Link>
-          <Link className="border-sky-300 focus:border-b-[5px] px-2" to="/videos">Videos</Link>
+        <navbar className="flex space-x-7 justify-center">
+          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/">Home</Link>
+          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/chat">Chat</Link>
+          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/jobs">Jobs</Link>
+          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/photos">Photos</Link>
+          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/videos">Videos</Link>
         </navbar>
         :
         <></>
