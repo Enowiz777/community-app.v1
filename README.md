@@ -143,4 +143,15 @@ Idea:
 
 - Change the navbar - if select create a color
 
+20220908
+
+Idea:
+
+=============
+PENDING IDEA
+=============
+1. Create like buttons
+2. Create heart buttons
+3. Create a checkin button.
+4. Create a memberlist on the left side. 
 
