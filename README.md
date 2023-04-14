@@ -155,3 +155,11 @@ PENDING IDEA
 3. Create a checkin button.
 4. Create a memberlist on the left side. 
 
+20230406
+
+- import firebase service.
+
+
+# Reforming the website
+
+1. Create the website

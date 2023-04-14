@@ -7,7 +7,7 @@ import {
   } from "react-router-dom";
 
 // Import components
-import Login from 'Login';
+
 import Home from "Components/home";
 import Chat from "Components/chat";
 import Photos from "Components/photos";
@@ -35,11 +35,7 @@ const Router = ({isLoggedIn, userObj}) => {
         }
         <Routes>
           <Route path="/">
-          { isLoggedIn ? 
             <Route index element={<Home userObj={userObj}/>}/>
-            :
-            <Route index element={<Login />}/>
-          }
             <Route path="chat" element={<Chat userObj={userObj}/>} />
             <Route path="jobs" element={<Jobs userObj={userObj} />} />
             <Route path="photos" element={<Photos userObj={userObj} />} />

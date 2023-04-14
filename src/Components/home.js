@@ -5,12 +5,12 @@ const Home = ({userObj}) => {
     const [admin, setAdmin] = useState(false);
     
     useEffect(() => {
-        if (userObj.email == 'enochpark89@gmail.com') {
-            setAdmin(true);
+        // if (userObj.email == 'enochpark89@gmail.com') {
+        //     setAdmin(true);
             
-        } else {
+        // } else {
             
-        }
+        // }
     });
     
     return(
