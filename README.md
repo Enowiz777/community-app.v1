@@ -162,4 +162,13 @@ PENDING IDEA
 
 # Reforming the website
 
-1. Create the website
+1. Create a community website.
+
+2. Create a globalStyle
+
+- Install styled-components.
+
+
+- Reset CSS.
+(in the tech doc)
+

@@ -19,20 +19,14 @@ Note:
 - If logged in, it routes to Home
 */
 
+/*
+Create a route to a different page (components)
+
+*/
+
 const Router = ({isLoggedIn, userObj}) => {
     return (
       <>
-        { isLoggedIn ? 
-        <navbar className="flex space-x-7 justify-center">
-          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/">Home</Link>
-          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/chat">Chat</Link>
-          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/jobs">Jobs</Link>
-          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/photos">Photos</Link>
-          <Link className="font-normal focus:bg-sky-300 focus:text-slate-100 focus:rounded-md px-[12px] py-2" to="/videos">Videos</Link>
-        </navbar>
-        :
-        <></>
-        }
         <Routes>
           <Route path="/">
             <Route index element={<Home userObj={userObj}/>}/>
@@ -41,35 +35,9 @@ const Router = ({isLoggedIn, userObj}) => {
             <Route path="photos" element={<Photos userObj={userObj} />} />
             <Route path="videos" element={<Videos />} />
           </Route>
-
         </Routes>
       </>
     );
   }
-
-  /* Route
-
-      <navbar className="flex space-x-10">
-      <div><a href="http://localhost:3000/">Home</a></div>
-      <div><a href="http://localhost:3000/chat">Chat</a></div>
-      <div>Jobs</div>
-      <div>Photos</div>
-      <div>Videos</div>
-    </navbar>
-    <Routes>
-    { isLoggedIn ? 
-    <Route path="/" element={<Home userObj={userObj}/>}>
-    :
-    <Route path="/" element={<Login />}>
-    }
-    <Route path="/chat" element={<Chat />} />
-    <Route path="/photos" element={<Photos />} />
-    <Route path="/videos" element={<Videos />} />
-    <Route path="/jobs" element={<Jobs />} />
-      </Route>
-      </Route>
-    </Routes>
-   
-   */
 
 export default Router;

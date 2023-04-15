@@ -1,16 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import Router from 'Router/router.js';
+import styled from "styled-components";
+import "index.css"
+import Router from "./Router/Router.js";
 
 
 function App() {
 
-  // onAuthStateChanged adds an observer for changes in user's sign-in state.
   useEffect(() => {
 
   }, []);
 
   return (
-    <div>hello</div>
+    <>
+      <Router />
+    </>
+    
   );
 }
 
