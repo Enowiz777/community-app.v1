@@ -5,37 +5,41 @@ import {
     Route,
     Link,
   } from "react-router-dom";
+import styled from "styled-components";
+
 
 // Import components
-
 import Home from "Components/home";
 import Chat from "Components/chat";
 import Photos from "Components/photos";
 import Videos from "Components/videos";
 import Jobs from "Components/jobs";
+import Header from "Components/Header";
+import Footer from "Components/Footer";
+import Navbar from "Components/Navbar";
 
-/* 
-Note: 
-- If logged in, it routes to Home
-*/
+const Content = styled.div`
+  margin: 0 120px;
+`;
 
-/*
-Create a route to a different page (components)
-
-*/
 
 const Router = ({isLoggedIn, userObj}) => {
     return (
       <>
-        <Routes>
-          <Route path="/">
-            <Route index element={<Home userObj={userObj}/>}/>
-            <Route path="chat" element={<Chat userObj={userObj}/>} />
-            <Route path="jobs" element={<Jobs userObj={userObj} />} />
-            <Route path="photos" element={<Photos userObj={userObj} />} />
-            <Route path="videos" element={<Videos />} />
-          </Route>
-        </Routes>
+        <Header />
+        <Navbar />
+        <Content>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Home userObj={userObj}/>}/>
+              <Route path="chat" element={<Chat userObj={userObj}/>} />
+              <Route path="jobs" element={<Jobs userObj={userObj} />} />
+              <Route path="photos" element={<Photos userObj={userObj} />} />
+              <Route path="videos" element={<Videos />} />
+            </Route>
+          </Routes>
+        </Content>
+        <Footer />
       </>
     );
   }

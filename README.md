@@ -172,3 +172,16 @@ PENDING IDEA
 - Reset CSS.
 (in the tech doc)
 
+- Add GlobalStyle component inside the index.js
+- import tailwind from app.js.
+- Create a router.js
+
+
+Next... create a header and footer.
+
+20230415
+
+- Added the Header and the Footer
+- Create a margin on the right and the left on the Content Section
+- Connect your app to Firebase.
+- Create a 게시판 like Craiglist
