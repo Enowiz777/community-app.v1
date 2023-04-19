@@ -8,18 +8,18 @@ const List = styled.li`
 
 const Navbar = () =>{
   return (
-  <div className='flex justify-center gap-3'>
+  <div className='flex justify-center gap-3 p-2 my-2'>
     <List>
-      <Link to="/">Dogs</Link>
+      <Link to="/">Home</Link>
     </List>
     <List>
-      <Link to="/cats">Cats</Link>
+      <Link to="/community">Community</Link>
     </List>
     <List>
-      <Link to="/sheeps">Sheeps</Link>
+      <Link to="/photos">Photos</Link>
     </List>
     <List>
-      <Link to="/goats">Goats</Link>
+      <Link to="/videos">Videos</Link>
     </List>
   </div>
   );
