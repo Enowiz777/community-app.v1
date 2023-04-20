@@ -6,8 +6,6 @@ const Header = () => {
     const Header = styled.div`
     height: 37px;
     background-color: black;
-
-
     `;
 
     return(

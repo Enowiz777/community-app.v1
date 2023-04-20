@@ -9,8 +9,8 @@ import styled from "styled-components";
 
 
 // Import components
-import Home from "Components/home";
-import Chat from "Components/chat";
+import Home from "Components/Home";
+import Chat from "Components/Chat";
 import Photos from "Components/photos";
 import Videos from "Components/videos";
 import Jobs from "Components/jobs";
@@ -31,8 +31,8 @@ const Router = ({isLoggedIn, userObj}) => {
         <Content>
           <Routes>
             <Route path="/">
-              <Route index element={<Home userObj={userObj}/>}/>
-              <Route path="chat" element={<Chat userObj={userObj}/>} />
+              <Route index element={<Home />}/>
+              <Route path="chat" element={<Chat/>} />
               <Route path="jobs" element={<Jobs userObj={userObj} />} />
               <Route path="photos" element={<Photos userObj={userObj} />} />
               <Route path="videos" element={<Videos />} />

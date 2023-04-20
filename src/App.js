@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
-import "index.css";
+
 import Router from "./Router/Router.js";
-import {app, db} from "./BE/firebase.js";
-import { collection, addDoc, getDocs, query  } from "firebase/firestore"; 
+import {app} from "./BE/firebase.js";
+import "index.css";
 
 function App() {
 
