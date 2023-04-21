@@ -5,12 +5,35 @@ import { collection, getCountFromServer } from "firebase/firestore";
 
 function Home() {
 
+    const [state, setState] = useState({
+        name: "",
+        email: "",
+        password: ""
+    });
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setState((prevProps) => ({
+          ...prevProps,
+          [name]: value
+        }));
+      };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(state);
+      };
+
+    // Get the total count on the articles.
   const getTotal = async () => {
     const coll = collection(db, "community");
     const snapshot = await getCountFromServer(coll);
     console.log('count: ', snapshot.data().count);
   }
   getTotal();
+
+  // test forms
+
 
   useEffect(() => {
 
@@ -20,16 +43,34 @@ function Home() {
         <div className="text-center my-3">
           <h1>Community News</h1>
         </div>
+
         <form className="flex flex-col">
-          <label>Enter your name:
-            <input type="text" />
-          </label>
-          <label>Enter your name:
-            <input type="text" />
-          </label>
-          <label>Enter your name:
-            <input type="text" />
-          </label>
+            <div class="mb-6">
+                <label className="block">Name</label>
+                <input type="name" id="name" className="shadow-sm w-2/5 h-7 bg-gray-200 focus:bg-white" 
+                    
+                />
+            </div>
+            <div class="mb-6">
+                <label className="block">Email</label>
+                <input 
+                    className="shadow-sm w-2/5 h-7 bg-gray-200 focus:bg-white"
+                    type="text" 
+                    id="email"  
+                    value={state.email}
+                    onChange={handleInputChange}
+                />
+            </div>
+            <div class="mb-6">
+                <label className="block">Password</label>
+                <input type="password" id="password" className="shadow-sm w-2/5 h-7 bg-gray-200 focus:bg-white" 
+                    value={state.password}
+                    onChange={handleInputChange}
+                />
+            </div>
+            <div class="mb-6">
+                <button type="submit" className="p-3 bg-slate-300 hover:bg-black hover:text-white	">Submit </button>
+            </div>
         </form>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
