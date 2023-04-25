@@ -1,74 +1,71 @@
 import React, {useState, useEffect } from "react"
 import {db} from "../BE/firebase.js";
 import { collection, getCountFromServer } from "firebase/firestore";
+import { useForm } from "react-hook-form";
 
 
 function Home() {
+    // destructure useForm
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const [state, setState] = useState({
-        name: "",
-        email: "",
-        password: ""
-    });
+    // Submit handler
+    const onSubmit = (data) => {
+        console.log(data);
+        /* output: {
+            name: 'Enoch Park', 
+            description: '111', 
+            email: 'enochpark89@gmail.com', 
+            password: '111'
+        } */
+      }
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setState((prevProps) => ({
-          ...prevProps,
-          [name]: value
-        }));
-      };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(state);
-      };
-
-    // Get the total count on the articles.
-  const getTotal = async () => {
-    const coll = collection(db, "community");
-    const snapshot = await getCountFromServer(coll);
-    console.log('count: ', snapshot.data().count);
-  }
-  getTotal();
-
-  // test forms
-
-
-  useEffect(() => {
-
-  }, []);
     return (
       <>
         <div className="text-center my-3">
           <h1>Community News</h1>
         </div>
 
-        <form className="flex flex-col">
-            <div class="mb-6">
+        <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+            <div className="mb-6">
                 <label className="block">Name</label>
-                <input type="name" id="name" className="shadow-sm w-2/5 h-7 bg-gray-200 focus:bg-white" 
-                    
+                <input 
+                    className="shadow-sm w-2/5 h-7 bg-gray-200 focus:bg-white" 
+                    placeholder='name'
+                    type="text"
+                    {...register("name")}
                 />
             </div>
-            <div class="mb-6">
+
+            <div className="mb-6">
+                <label className="block">Description</label>
+                <textarea 
+                    className="shadow-sm bg-gray-200 focus:bg-white"
+                    placeholder="description" 
+                    rows="4" 
+                    cols="50"
+                    {...register("description")}
+                >
+                </textarea>
+            </div>
+            <div className="mb-6">
                 <label className="block">Email</label>
                 <input 
                     className="shadow-sm w-2/5 h-7 bg-gray-200 focus:bg-white"
+                    placeholder='email'
                     type="text" 
-                    id="email"  
-                    value={state.email}
-                    onChange={handleInputChange}
+                    {...register("email")}
                 />
             </div>
-            <div class="mb-6">
+            <div className="mb-6">
                 <label className="block">Password</label>
-                <input type="password" id="password" className="shadow-sm w-2/5 h-7 bg-gray-200 focus:bg-white" 
-                    value={state.password}
-                    onChange={handleInputChange}
+                <input 
+                    className="shadow-sm w-2/5 h-7 bg-gray-200 focus:bg-white" 
+                    placeholder="password"
+                    type="password" 
+                    {...register("password")}
                 />
             </div>
-            <div class="mb-6">
+            <div className="mb-6">
                 <button type="submit" className="p-3 bg-slate-300 hover:bg-black hover:text-white	">Submit </button>
             </div>
         </form>

@@ -185,3 +185,66 @@ Next... create a header and footer.
 - Create a margin on the right and the left on the Content Section
 - Connect your app to Firebase.
 - Create a 게시판 like Craiglist
+https://codepen.io/hongjiseong/pen/gOOrdvL
+
+20230420
+
+- Use useForm() hook to save you time on creating the form. 
+
+https://codesandbox.io/s/login-form-forked-9so04x?file=/src/App.js
+
+- It may be work it to create a form without the hook because it helps you understand how it works. 
+
+20230421
+
+- Creating the field with 
+
+- Saving codes without using useForm() react hook.
+```js
+ // create states that will contain variable.
+    const [author, setAuthor] = useState("");
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState("");
+
+    const handleInputChange = (event) => {
+        const {
+            target: {value, name}
+        } = event;
+
+        if (name == "author"){
+            setAuthor(value);
+        } else if (name == "description") {
+            setDescription(value);
+        } else {
+            setDate(value);
+        }
+        
+    }
+    
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+
+        
+      };
+
+    // Get the total count on the articles.
+  const getTotal = async () => {
+    const coll = collection(db, "community");
+    const snapshot = await getCountFromServer(coll);
+    console.log('count: ', snapshot.data().count);
+  }
+  getTotal();
+
+  // test forms
+
+
+  useEffect(() => {
+
+```
+
+20230424
+
+- Creating many fields are tedious. You can use react-hook-form to make this process simple.
+
