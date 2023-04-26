@@ -248,3 +248,9 @@ https://codesandbox.io/s/login-form-forked-9so04x?file=/src/App.js
 
 - Creating many fields are tedious. You can use react-hook-form to make this process simple.
 
+20230425
+
+- Add the data received in the form to Firebase/FireStore DB.
+- Display what is in DB in a tabular format.
+
+- Take off: I need to change the useEffect so that it would upate the data everytime the data gets uploaded to db.
