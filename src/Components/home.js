@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 function Home() {
     
     const [communityData, setCommunityData] = useState([]);
-    
+    const [submitChecker, setSubmitChecker] = useState(false);
     // destructure useForm
     const { register, 
             handleSubmit, 
@@ -22,20 +22,7 @@ function Home() {
         
         } = useForm();
 
-    // Submit handler
-    const onSubmit = async (data) => {
-        // Add a new document with a generated id.
-        const docRef = await addDoc(collection(db, "community"), 
-            data
-        );
-        console.log("Document written with ID: ", docRef.id);
-        resetField("name");
-        resetField("description");
-        resetField("email");
-        resetField("password");
-        setCommunityData([]);
-    }
-
+    // getData function will get the data from the firestore DB.
     const getData = async () => {
         // query the documents
         const q = query(collection(db, "community"));
@@ -55,11 +42,31 @@ function Home() {
             // console.log(doc.id, " => ", doc.data());
         });
     }
+
     // run useEffect hook every render (without [])
     // run only in an inital render
     useEffect(() => {
         getData();  
     }, []);
+
+    // Submit handler
+    const onSubmit = async (data) => {
+        // clear existing array
+        setCommunityData([]);
+        // Add a new document with a generated id.
+        const docRef = await addDoc(collection(db, "community"), 
+            data
+        );
+        console.log("Document written with ID: ", docRef.id);
+        resetField("name");
+        resetField("description");
+        resetField("email");
+        resetField("password");
+        getData();
+    }
+
+
+
 
     return (
       <>

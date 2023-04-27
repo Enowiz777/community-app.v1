@@ -254,3 +254,9 @@ https://codesandbox.io/s/login-form-forked-9so04x?file=/src/App.js
 - Display what is in DB in a tabular format.
 
 - Take off: I need to change the useEffect so that it would upate the data everytime the data gets uploaded to db.
+
+20230426
+
+- I finished working on useEffect(). I just make it render in the beginning and called the paint() function whenever the submit button is clicked*. 
+- I need to work on the chat section but I can't because I need to first create the authentication app so that the user name informaiton will be displayed on the chat seciton when they start putting data. 
+- I can move on to working on photos. I can upload photo from the PC and display them in a grid format.

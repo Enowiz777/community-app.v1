@@ -6,13 +6,14 @@ function Chat({userObj}) {
     const [nweet, setNweet] = useState("");
     const onSubmit = async (event) => {
       event.preventDefault();
-      const docRef = await addDoc(collection(db, "nweets"), {
-        name: "Tokyo",
-        country: "Japan"
-      });
-      console.log("Document written with ID: ", docRef.id);
+      // const docRef = await addDoc(collection(db, "nweets"), {
+      //   name: "Tokyo",
+      //   country: "Japan"
+      // });
+      // console.log("Document written with ID: ", docRef.id);
       setNweet("");
       console.log("pressed");
+      console.log(nweet);
     };
     const onChange = (event) => {
       const {
