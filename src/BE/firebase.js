@@ -5,6 +5,7 @@ import { initializeApp } from "firebase/app";
 
 // FireStore import = DB
 import { getFirestore, doc, setDoc, addDoc, collection } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 
 // Your web app's Firebase configuration
@@ -20,6 +21,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+
+// Initialize db and export
 export const db = getFirestore(app);
+// Initialize Cloud Storage and get a reference to the service
+export const storage = getStorage(app);
 export const fb_doc = doc;
 export const fb_setdoc = setDoc;
