@@ -265,4 +265,5 @@ https://codesandbox.io/s/login-form-forked-9so04x?file=/src/App.js
 20230427
 
 - Work on the photo upload function. I will store photos in the Storage in the Firebase. 
-- 
+- Create the photo upload and user can decide the name; need to clean the code. 
+- Need to get download files url and show image of the storage. Display in a grid format.
