@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import {v4 as uuidv4} from 'uuid';
 import {storage } from "../BE/firebase";
-import { ref, uploadBytes, listAll  } from "firebase/storage";
+import { 
+    ref, 
+    uploadBytes, 
+    listAll,
+    getDownloadURL
+    
+} from "firebase/storage";
 
 const Photos = () => {
 
@@ -11,8 +17,11 @@ const Photos = () => {
     const [filename, setFilename] = useState(null);
     // send success message when the picture gets uploaded to the firebase storage.
     const [uploaded, setUploaded ] = useState(false);
+    // picture ulrs
+    const [URLs, setURLs] = useState([]);
 
-    // receive each key that users input and set it to a filename state.
+
+    // User inputs -> update filename state.
     const handleFilename = (event) => {
         const {
             target: {value}
@@ -21,14 +30,28 @@ const Photos = () => {
         
     }   
 
-    const handleUpload = () => {
+    const handleUpload = async () => {
         setSelectedImage(null)
         // create a reference of the upload (set the filename)
-        const storageRef = ref(storage, filename);
+        const storageRef = ref(storage, `img/${filename}`);
         // upload the picture 
-        uploadBytes(storageRef, selectedImage).then((snapshot) => {
+        const uploadPic = await uploadBytes(storageRef, selectedImage).then((snapshot) => {
             setUploaded(true);
           });
+
+        
+        // once uploaded make sure to add it to the state.
+        const addPicToURLs = await getDownloadURL(ref(storage, `img/${filename}`))
+        .then((url) => {
+            // add newly added url into URLs state.
+            setURLs((oldArray => [...oldArray,url]));
+        })
+        .catch((error) => {
+            console.log(error);
+          // Handle any errors
+        });
+        console.log(URLs);
+
     }
 
     function handleEnter (e) {
@@ -39,23 +62,32 @@ const Photos = () => {
 
     // handle Test
     const handleTest = () => {
-        const listRef = ref(storage);
+  
+      }
+       
+       
+    // useEffect will only run once in the beginning.
+      useEffect(() => {
+        // Fetch data from the firebase/storage.
+        const listRef = ref(storage, 'img/');
         listAll(listRef)
-            .then((res) => {
-            res.prefixes.forEach((folderRef) => {
-                // All the prefixes under listRef.
-                // You may call listAll() recursively on them.
-                console.log(folderRef);
-            });
-            res.items.forEach((itemRef) => {
-                // All the items under listRef.
-                // console.log(itemRef);
-                console.log(itemRef);
-            });
-            }).catch((error) => {
-            // Uh-oh, an error occurred!
-            });
-    }
+        .then((res) => {
+          res.prefixes.forEach((folderRef) => {
+            // All the prefixes under listRef.
+            // You may call listAll() recursively on them.
+          });
+          res.items.forEach((itemRef) => {
+            // All the items under listRef.
+            getDownloadURL(itemRef).then((url)=>{
+                setURLs((oldArray => [...oldArray,url]));
+            })
+          });
+        }).catch((error) => {
+          // Uh-oh, an error occurred!
+        });
+
+
+    }, []);
 
 
     return(
@@ -121,7 +153,21 @@ const Photos = () => {
             )
         }
         <input className="btn btn-blue ml-4" type="button" value="Test" onClick={handleTest}/>
-
+        <br />
+        <br />
+       {        
+        // display picture
+        URLs &&
+        ( 
+        URLs.map((item) =>
+            <div>
+            <img src={item}></img>
+          
+            </div>
+        )
+        )
+        }
+        
 
                
 

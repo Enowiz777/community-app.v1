@@ -267,3 +267,13 @@ https://codesandbox.io/s/login-form-forked-9so04x?file=/src/App.js
 - Work on the photo upload function. I will store photos in the Storage in the Firebase. 
 - Create the photo upload and user can decide the name; need to clean the code. 
 - Need to get download files url and show image of the storage. Display in a grid format.
+
+20230505
+
+Plan.
+- Create a img folder within the storage and make the image gets stored in the storage. 
+
+- Before the whole thing start, useEffect will fetch the data from the backend and store them in the state.
+
+- When the user input the data, it will be add both to the state and the backend. This way, the user will still see the data gets painted. Once the page is refreshed, it will get the fresh data from the storage. 
+
