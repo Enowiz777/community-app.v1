@@ -277,3 +277,11 @@ Plan.
 
 - When the user input the data, it will be add both to the state and the backend. This way, the user will still see the data gets painted. Once the page is refreshed, it will get the fresh data from the storage. 
 
+- What I learned:
+getDownloadURL 
+
+
+20230504
+
+- Create a grid for photo booth.
+- Then, photo should display the photo and the title of the photo.

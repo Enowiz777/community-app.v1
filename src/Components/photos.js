@@ -39,18 +39,20 @@ const Photos = () => {
             setUploaded(true);
           });
 
-        
         // once uploaded make sure to add it to the state.
         const addPicToURLs = await getDownloadURL(ref(storage, `img/${filename}`))
         .then((url) => {
-            // add newly added url into URLs state.
-            setURLs((oldArray => [...oldArray,url]));
+          const picObj = {};
+          picObj.name=storageRef.name;
+          picObj.url=url;
+          // add newly added url into URLs state.
+          setURLs((oldArray => [...oldArray,picObj]));
         })
         .catch((error) => {
             console.log(error);
           // Handle any errors
         });
-        console.log(URLs);
+
 
     }
 
@@ -59,11 +61,6 @@ const Photos = () => {
         setFilename("");
     }
 
-
-    // handle Test
-    const handleTest = () => {
-  
-      }
        
        
     // useEffect will only run once in the beginning.
@@ -77,9 +74,16 @@ const Photos = () => {
             // You may call listAll() recursively on them.
           });
           res.items.forEach((itemRef) => {
+
+            
             // All the items under listRef.
             getDownloadURL(itemRef).then((url)=>{
-                setURLs((oldArray => [...oldArray,url]));
+              // create a picture object
+              // holds name and url
+              const picObj = {};
+              picObj.name=itemRef.name;
+              picObj.url=url;
+                setURLs((oldArray => [...oldArray,picObj]));
             })
           });
         }).catch((error) => {
@@ -138,7 +142,6 @@ const Photos = () => {
                 type="file"
                 name="myImage"
                 onChange={(event) => {
-                    console.log(event.target.files[0]);
                     setSelectedImage(event.target.files[0]);
                     setUploaded(false);
             }}
@@ -152,21 +155,24 @@ const Photos = () => {
                 </div>
             )
         }
-        <input className="btn btn-blue ml-4" type="button" value="Test" onClick={handleTest}/>
         <br />
         <br />
-       {        
-        // display picture
-        URLs &&
-        ( 
-        URLs.map((item) =>
-            <div>
-            <img src={item}></img>
-          
-            </div>
-        )
-        )
-        }
+        <div className="container grid grid-cols-3 gap-7 mx-auto">
+        {        
+            // display picture
+            
+            URLs &&
+            ( 
+              URLs.map((item) => 
+                <div>
+                  <img className="h-80 w-full rounded"src={item.url} />
+                  <h1>{item.name}</h1>
+                </div>
+              )
+                
+            )
+          }
+        </div>
         
 
                

@@ -20,6 +20,20 @@ function Videos() {
         let embedLInk = "https://www.youtube.com/embed/" + linkArray[1]
         setYouTubeArray(oldArray => [...oldArray, embedLInk]);
         
+        // YouTube API data fetch
+        const apiKey = 'AIzaSyDQ_U1BrFw4gzK-leeO1TPYnWevL5M9IJQ'; // replace with your own YouTube Data API key
+        const videoUrl = youTubeLink; // example YouTube video link
+        const videoId = videoUrl.split('=')[1]; // extract video ID from link
+
+        fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet`)
+        .then(response => response.json())
+        .then(data => {
+            const videoTitle = data.items[0].snippet.title; // extract video title
+            const videoDescription = data.items[0].snippet.description; // extract video description
+            console.log('Title:', videoTitle);
+            console.log('Description:', videoDescription);
+        })
+        .catch(error => console.error(error));
     }
     
 
