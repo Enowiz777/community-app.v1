@@ -20,6 +20,7 @@ import Navbar from "Components/Navbar";
 
 const Content = styled.div`
   margin: 0 120px;
+  height: 100vh;
 `;
 
 

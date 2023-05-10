@@ -285,3 +285,9 @@ getDownloadURL
 
 - Create a grid for photo booth.
 - Then, photo should display the photo and the title of the photo.
+
+20230509 
+- Worked on the CSS of the header and the footer. 
+- Created the LOGO and LOGIN div in header. 
+- Made header sticky. 
+- Made the footer appear on the bottom of the content or body.

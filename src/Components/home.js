@@ -66,8 +66,6 @@ function Home() {
     }
 
 
-
-
     return (
       <>
         <div className="text-center my-3">
