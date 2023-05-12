@@ -12,7 +12,7 @@ function Videos() {
             setYouTubeLink(value);
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         // Convert to a embed link
         let watchLink = youTubeLink;
@@ -21,7 +21,8 @@ function Videos() {
         setYouTubeArray(oldArray => [...oldArray, embedLInk]);
         
         // YouTube API data fetch
-        const apiKey = 'AIzaSyDQ_U1BrFw4gzK-leeO1TPYnWevL5M9IJQ'; // replace with your own YouTube Data API key
+        const apiKey = await process.env.YOUTUBE_API_KEY // replace with your own YouTube Data API key
+        console.log(apiKey);
         const videoUrl = youTubeLink; // example YouTube video link
         const videoId = videoUrl.split('=')[1]; // extract video ID from link
 
