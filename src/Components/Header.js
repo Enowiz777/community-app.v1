@@ -12,6 +12,7 @@ const Header = () => {
         position: sticky;
         top: 0;
         padding: 20px;
+        z-index: 3;
     `;
     const Text = styled.button`
         color: white;

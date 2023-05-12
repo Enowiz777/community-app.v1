@@ -291,3 +291,7 @@ getDownloadURL
 - Created the LOGO and LOGIN div in header. 
 - Made header sticky. 
 - Made the footer appear on the bottom of the content or body.
+
+20230510
+- Styling the NavBar.
+- Add Contact page into the NavBar.
