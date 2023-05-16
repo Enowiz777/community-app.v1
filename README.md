@@ -295,3 +295,14 @@ getDownloadURL
 20230510
 - Styling the NavBar.
 - Add Contact page into the NavBar.
+
+20230511
+- Build an authentication page.
+- Read the firebse doc.
+- 
+
+20230515
+- Built an authentication page. 
+- Need to test existing user
+- Create create user option. 
+- The UI is already there. I have it.

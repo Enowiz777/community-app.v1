@@ -8,15 +8,19 @@ import {
 import styled from "styled-components";
 
 
-// Import components
-import Home from "Components/Home";
-import Chat from "Components/Chat";
-import Photos from "Components/photos";
-import Videos from "Components/videos";
-import Jobs from "Components/jobs";
+// Import pages
+import Home from "Pages/Home";
+import Chat from "Pages/Chat";
+import Photos from "Pages/Photos";
+import Videos from "Pages/Videos";
+import Jobs from "Pages/Jobs";
+import Auth from "Pages/LoginPage";
+
+// Import Components
 import Header from "Components/Header";
 import Footer from "Components/Footer";
 import Navbar from "Components/Navbar";
+
 
 const Content = styled.div`
   margin: 0 72px;
@@ -44,6 +48,7 @@ const Router = ({isLoggedIn, userObj}) => {
                 <Route path="jobs" element={<Jobs userObj={userObj} />} />
                 <Route path="photos" element={<Photos userObj={userObj} />} />
                 <Route path="videos" element={<Videos />} />
+                <Route path="auth" element={<Auth />} />
               </Route>
             </Routes>
           </Content >
