@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from "react"
 import styled from "styled-components";
+import { getAuth, signOut } from "firebase/auth";
 
 const Header = () => {
     
@@ -23,10 +24,22 @@ const Header = () => {
         }
     `;
 
+    // sign out the user once button is clicked.
+    const signOutHandler = (e) => {
+        e.preventDefault();
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            console.log("Signed out");
+        }).catch((error) => {
+            console.log("Sign out failed.");
+        });
+    };
+
+
     return(
         <Container>
             <Text>DEMO LOGO</Text>
-            <Text>LOGIN</Text>
+            <Text onClick={signOutHandler}>LOGOUT</Text>
         </Container>
     );
 }
