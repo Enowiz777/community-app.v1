@@ -1,6 +1,34 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import styled from "styled-components";
 
+import { 
+  getAuth, 
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword 
+} from "firebase/auth";
+
+
+// styled components
+const StyledInput = styled.input`
+    border:0; 
+    padding:5px; 
+    font-size: 12px; 
+    color:black; 
+    border:solid 1px #ccc; 
+    margin:0 0 10px; 
+    width: 70%;
+    -moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2); 
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2); 
+    box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    border-radius: 3px;   
+    :focus {
+      outline: none !important;
+      border-color: #719ECE;
+      box-shadow: 0 0 10px #719ECE;
+    }
+`;
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -50,29 +78,47 @@ const LoginPage = () => {
       } else {
         console.log("Great it matches!")
       }
+      // use the inputs to create a new account.
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, username, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          console.log("user information:" + user)
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          // ..
+        });
+
       setUsername('');
       setPassword('');
       setConfirmPassword('');
     }
 
     return (
-      <div>
+      <div className="h-screen flex flex-col items-center justify-center">
+        <div className="w-1/4">
         { !showCreateAccount ? (
-          <div>
-            <h1>Login</h1>
+          <>
+            <h1 className="text-center">Login</h1>
+            <StyledInput />
             <form>
               <label>
                 Username:
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
+              <StyledInput
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
               </label>
               <br />
               <label>
                 Password:
-                <input
+                <StyledInput
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -83,9 +129,9 @@ const LoginPage = () => {
               <br />
               <button onClick={handleCreateNew}>Create New</button>
             </form>
-          </div>
+          </>
         ) : (
-          <div>
+        <>
           <h1>Create New</h1>
           <form>
             <label>
@@ -116,17 +162,20 @@ const LoginPage = () => {
             </label>
             <br />
             <button onClick={createHandler}>Create</button>
+            <button onClick={createHandler}>Create</button>
 
           </form>
-        </div>
+        </>
 
         )
-      
-      
       }
-  
-
+        <br />
+        <button>Login with Google</button>
+        <br />
+        <button>Login with Yahoo</button>
+        <br />
       </div>
+    </div>
     );
   };
   

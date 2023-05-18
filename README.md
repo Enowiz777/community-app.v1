@@ -306,3 +306,11 @@ getDownloadURL
 - Need to test existing user
 - Create create user option. 
 - The UI is already there. I have it.
+
+20230517
+- Allow users to create the login account. 
+- Worked on the loginform CSS
+- I should just take it from the web and use it. 
+- Make it simple. 
+- align
+- Do the later design.
