@@ -314,3 +314,8 @@ getDownloadURL
 - Make it simple. 
 - align
 - Do the later design.
+
+20230523
+- Worked on the UI of the login page. 
+- I need to get the user logged in information and post it to the Firebase Db. 
+- 

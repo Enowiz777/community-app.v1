@@ -105,64 +105,67 @@ const LoginPage = () => {
         { !showCreateAccount ? (
           <>
             <h1 className="text-center">Login</h1>
-            <StyledInput />
             <form>
-              <label>
-                Username:
+              <label className="font-bold	">Username:</label>
+              <br/>
               <StyledInput
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-              </label>
+              
               <br />
-              <label>
-                Password:
+              <label className="font-bold	">Password: </label>
+              <br/>
                 <StyledInput
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-              </label>
+              
               <br />
-              <button onClick={submitHandler}>Login</button>
+              <button className="my-2 p-3 w-[100%] rounded-xl bg-blue-400" onClick={submitHandler}>Login</button>
               <br />
-              <button onClick={handleCreateNew}>Create New</button>
+              <button className="my-2 p-3 w-[100%] rounded-xl bg-blue-400" onClick={handleCreateNew}>Create New</button>
             </form>
           </>
         ) : (
         <>
           <h1>Create New</h1>
           <form>
-            <label>
+            <label className="font-bold	">
               Username:
-              <input
+            </label>
+            <br/>
+              <StyledInput
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-            </label>
+            
             <br />
-            <label>
+            <label className="font-bold	">
               Password:
-              <input
+            </label>
+            <br/>
+              <StyledInput
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </label>
+            
             <br />
-            <label>
+            <label className="font-bold	">
               Confirm Password:
-              <input
+            </label>
+              <StyledInput
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
-            </label>
+            
             <br />
-            <button onClick={createHandler}>Create</button>
-            <button onClick={createHandler}>Create</button>
+            <button className="my-2 p-3 w-[100%] rounded-xl bg-blue-400" onClick={createHandler}>Create</button>
 
           </form>
         </>
@@ -170,9 +173,9 @@ const LoginPage = () => {
         )
       }
         <br />
-        <button>Login with Google</button>
+        <button className="my-2 p-3 w-[100%] rounded-xl bg-blue-400">Login with Google</button>
         <br />
-        <button>Login with Yahoo</button>
+        <button className="my-2 p-3 w-[100%] rounded-xl bg-blue-400">Login with Yahoo</button>
         <br />
       </div>
     </div>
