@@ -319,3 +319,11 @@ getDownloadURL
 - Worked on the UI of the login page. 
 - I need to get the user logged in information and post it to the Firebase Db. 
 - 
+
+20230525
+- Get user logged in information
+- Add to the table when the user put an inpute.
+
+Try to create a zeroboard type of community board where the user can post contents.
+
+Examples: https://www.missycoupons.com/zero/board.php#id=pet&no=4569
