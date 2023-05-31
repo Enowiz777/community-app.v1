@@ -14,6 +14,12 @@ function Home() {
     
     const [communityData, setCommunityData] = useState([]);
     const [submitChecker, setSubmitChecker] = useState(false);
+    
+    // Toggle form
+    const [isFormVisible, setIsFormVisible] = useState(false);
+    const [buttonText, setButtonText] = useState('Show Form');
+
+    
     // destructure useForm
     const { register, 
             handleSubmit, 
@@ -49,6 +55,13 @@ function Home() {
         getData();  
     }, []);
 
+    // Toggle form handler
+    const toggleForm = () => {
+        setIsFormVisible(!isFormVisible);
+        setButtonText(isFormVisible ? 'Show Form' : 'Hide Form');
+
+      };
+
     // Submit handler
     const onSubmit = async (data) => {
         // clear existing array
@@ -66,50 +79,58 @@ function Home() {
     }
 
 
+
     return (
       <div>
         <h1 className="text-center my-3">Community News</h1>
-         {/* Create a form  */}
-        <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-6">
-                <h2 className="block">Name</h2>
-                <input 
-                    className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white" 
-                    type="text"
-                    {...register("name")}
-                />
-            </div>
+        
+        {/* Toogle logic */}
+        {/* Create a form  */}
+        {isFormVisible && (
+            <form className="flex flex-col " onSubmit={handleSubmit(onSubmit)}>
+                <div className="mb-6">
+                    <h2 className="block">Name</h2>
+                    <input 
+                        className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white" 
+                        type="text"
+                        {...register("name")}
+                    />
+                </div>
 
-            <div className="mb-6">
-                <h2 className="block">Description</h2>
-                <textarea 
-                    className="shadow-sm w-2/5 h-24 bg-[#f6e58d] focus:bg-white"
-                    rows="4" 
-                    cols="50"
-                    {...register("description")}
-                >
-                </textarea>
-            </div>
-            <div className="mb-6">
-                <h2 className="block">Email</h2>
-                <input 
-                    className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white"
-                    type="text" 
-                    {...register("email")}
-                />
-            </div>
-            <div className="mb-6">
-                <h2 className="block">Password</h2>
-                <input 
-                    className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white" 
-                    type="password" 
-                    {...register("password")}
-                />
-            </div>
-            <div className="mb-6">
-                <button type="submit" className="p-3 bg-slate-300 hover:bg-black hover:text-white	">Submit </button>
-            </div>
-        </form>
+                <div className="mb-6">
+                    <h2 className="block">Description</h2>
+                    <textarea 
+                        className="shadow-sm w-2/5 h-24 bg-[#f6e58d] focus:bg-white"
+                        rows="4" 
+                        cols="50"
+                        {...register("description")}
+                    >
+                    </textarea>
+                </div>
+                <div className="mb-6">
+                    <h2 className="block">Email</h2>
+                    <input 
+                        className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white"
+                        type="text" 
+                        {...register("email")}
+                    />
+                </div>
+                <div className="mb-6">
+                    <h2 className="block">Password</h2>
+                    <input 
+                        className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white" 
+                        type="password" 
+                        {...register("password")}
+                    />
+                </div>
+                <div className="mb-6">
+                    <button type="submit" className="m-2 p-3 bg-slate-300 hover:bg-black hover:text-white">Submit </button>
+                </div>
+            </form>
+        )}
+
+        <button onClick={toggleForm} className="my-3 p-3 bg-slate-300 hover:bg-black hover:text-white">{buttonText}</button>
+        
         {/* Create tables after getting the data from the firebase */}
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -137,7 +158,7 @@ function Home() {
                         communityData.map((eachData)=> (
                             <tr className="bg-white dark:bg-gray-800">
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {eachData.id}}
+                                    {eachData.id}
                                 </th>
                                 <td className="px-6 py-4">
                                     {eachData.name}

@@ -327,3 +327,10 @@ getDownloadURL
 Try to create a zeroboard type of community board where the user can post contents.
 
 Examples: https://www.missycoupons.com/zero/board.php#id=pet&no=4569
+
+20230530
+- Created a Hide and Show form button
+- I need to change the ID to List and start counting 1 to 100
+- Start getting user ID information from the login data. Then, use that information to create an input.
+- Remove Password input.
+- People should be able to click on the table to view the content.
