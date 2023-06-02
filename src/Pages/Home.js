@@ -8,17 +8,19 @@ import {
     query
 } from "firebase/firestore";
 import { useForm } from "react-hook-form";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 function Home() {
     
     const [communityData, setCommunityData] = useState([]);
-    const [submitChecker, setSubmitChecker] = useState(false);
     
     // Toggle form
     const [isFormVisible, setIsFormVisible] = useState(false);
     const [buttonText, setButtonText] = useState('Show Form');
 
+    // Save UserData
+    const [userData, setUserData] = useState("");
     
     // destructure useForm
     const { register, 
@@ -49,10 +51,32 @@ function Home() {
         });
     }
 
+    // get userdata
+    const getUserData = async () => {
+
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if (user !== null) {
+          // The user object has basic properties such as display name, email, etc.
+          const displayName = user.displayName;
+          const email = user.email;
+          const photoURL = user.photoURL;
+          const emailVerified = user.emailVerified;
+          setUserData(email);
+          // The user's ID, unique to the Firebase project. Do NOT use
+          // this value to authenticate with your backend server, if
+          // you have one. Use User.getToken() instead.
+          const uid = user.uid;
+        }
+        
+    }
+
+
     // run useEffect hook every render (without [])
     // run only in an inital render
-    useEffect(() => {
-        getData();  
+    useEffect( () => {
+        getData(); 
+        getUserData();
     }, []);
 
     // Toggle form handler
@@ -131,6 +155,7 @@ function Home() {
 
         <button onClick={toggleForm} className="my-3 p-3 bg-slate-300 hover:bg-black hover:text-white">{buttonText}</button>
         
+        <div>{userData}</div>
         {/* Create tables after getting the data from the firebase */}
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
