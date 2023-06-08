@@ -334,3 +334,11 @@ Examples: https://www.missycoupons.com/zero/board.php#id=pet&no=4569
 - Start getting user ID information from the login data. Then, use that information to create an input.
 - Remove Password input.
 - People should be able to click on the table to view the content.
+
+- Create a chat 
+- Use Daisy UI
+
+20230601
+- Able to retrieve the userData
+- I need to start recording data without the email input and email output.
+- Remove password data section.

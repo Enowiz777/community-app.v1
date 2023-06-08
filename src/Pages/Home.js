@@ -97,8 +97,6 @@ function Home() {
         console.log("Document written with ID: ", docRef.id);
         resetField("name");
         resetField("description");
-        resetField("email");
-        resetField("password");
         getData();
     }
 
@@ -113,11 +111,11 @@ function Home() {
         {isFormVisible && (
             <form className="flex flex-col " onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-6">
-                    <h2 className="block">Name</h2>
+                    <h2 className="block">Title</h2>
                     <input 
                         className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white" 
                         type="text"
-                        {...register("name")}
+                        {...register("title")}
                     />
                 </div>
 
@@ -132,22 +130,6 @@ function Home() {
                     </textarea>
                 </div>
                 <div className="mb-6">
-                    <h2 className="block">Email</h2>
-                    <input 
-                        className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white"
-                        type="text" 
-                        {...register("email")}
-                    />
-                </div>
-                <div className="mb-6">
-                    <h2 className="block">Password</h2>
-                    <input 
-                        className="shadow-sm w-2/5 h-7 bg-[#f6e58d] focus:bg-white" 
-                        type="password" 
-                        {...register("password")}
-                    />
-                </div>
-                <div className="mb-6">
                     <button type="submit" className="m-2 p-3 bg-slate-300 hover:bg-black hover:text-white">Submit </button>
                 </div>
             </form>
@@ -155,7 +137,6 @@ function Home() {
 
         <button onClick={toggleForm} className="my-3 p-3 bg-slate-300 hover:bg-black hover:text-white">{buttonText}</button>
         
-        <div>{userData}</div>
         {/* Create tables after getting the data from the firebase */}
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -165,17 +146,15 @@ function Home() {
                             ID
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Name
+                            Title
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Description
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Email
+                            Author
                         </th>
-                        <th scope="col" className="px-6 py-3">
-                            Password
-                        </th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -186,17 +165,15 @@ function Home() {
                                     {eachData.id}
                                 </th>
                                 <td className="px-6 py-4">
-                                    {eachData.name}
+                                    {eachData.title}
                                 </td>
                                 <td className="px-6 py-4">
                                     {eachData.description}
                                 </td>
                                 <td className="px-6 py-4">
-                                    {eachData.email}
+                                    {userData}
                                 </td>
-                                <td className="px-6 py-4">
-                                    {eachData.password}
-                                </td>
+
                             </tr>
                         ))
                     }
