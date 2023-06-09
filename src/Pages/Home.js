@@ -104,7 +104,7 @@ function Home() {
 
     return (
       <div>
-        <h1 className="text-center my-3">Community News</h1>
+        <h1 className="text-center my-3">Community Board</h1>
         
         {/* Toogle logic */}
         {/* Create a form  */}

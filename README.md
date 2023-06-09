@@ -342,3 +342,11 @@ Examples: https://www.missycoupons.com/zero/board.php#id=pet&no=4569
 - Able to retrieve the userData
 - I need to start recording data without the email input and email output.
 - Remove password data section.
+
+20230607
+- Remove the passwor and email section from the DB. 
+- The rendering needs to change. 
+- useEffect run once at the start, when the user add something, it will be added in the state. If other user add something, the page needs to be refreshed for the changes to take effect.
+
+20230608
+- Chat view:
